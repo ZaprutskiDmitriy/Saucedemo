@@ -22,7 +22,6 @@ public class CartPage extends BasePage{
         Map<String, String> hashMap = new HashMap<>();
         hashMap.put(productNameText, productPriceText);
         return hashMap;
-
     }
 
 }
