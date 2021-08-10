@@ -24,4 +24,20 @@ public class CartPage extends BasePage{
         return hashMap;
     }
 
+    public void removeButton(){
+        WebElement removeButton = driver.findElement(By.cssSelector("button[data-test='remove-sauce-labs-fleece-jacket']"));
+        removeButton.click();
+    }
+
+    public void continueShoppingButton(){
+        WebElement continueShoppingButton = driver.findElement(By.cssSelector("button[data-test=continue-shopping]"));
+        continueShoppingButton.click();
+    }
+
+    public void checkout(){
+        WebElement checkoutButton = driver.findElement(By.cssSelector("button[data-test=checkout]"));
+        checkoutButton.click();
+    }
+
+
 }

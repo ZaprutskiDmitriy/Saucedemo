@@ -8,25 +8,22 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
-public class TestLoginAndShoppingCart extends BaseTest {
+public class RemoveButtonAtHomepageTest extends BaseTest{
 
     @Test
-    public void testLoginAndShoppingCart() {
+    public void removeButtonAtShoppingCartTest() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage();
         loginPage.login("standard_user", "secret_sauce");
 
         HomePage homePage = new HomePage();
         homePage.addProductToCart("Sauce Labs Fleece Jacket");
+        homePage.removeProductFromCart("Sauce Labs Fleece Jacket");
 
-        homePage.navigateToCart();
+        homePage.navigateToEmptyCart();
 
         CartPage cartPage = new CartPage();
         Map<String, String> productInCartData = cartPage.getProductData();
-
-        Assert.assertFalse(productInCartData.isEmpty(), "No products in cart");
-        Assert.assertTrue(productInCartData.containsKey("Sauce Labs Fleece Jacket"), "No products with name Sauce Labs Fleece Jacket");
-        Assert.assertEquals(productInCartData.get("Sauce Labs Fleece Jacket"), "$49.99", "Prices doesn't match");
-
+        Assert.assertTrue(productInCartData.isEmpty(), "Have products in cart");
     }
 }

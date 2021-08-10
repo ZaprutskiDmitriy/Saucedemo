@@ -13,6 +13,20 @@ public class LoginPage extends BasePage {
         inputPassword.sendKeys("secret_sauce");
         WebElement loginButton = driver.findElement(By.cssSelector("input[type='submit']"));
         loginButton.click();
+    }
 
+    public void loginButton(){
+        WebElement loginButton = driver.findElement(By.cssSelector("input[type='submit']"));
+        loginButton.click();
+    }
+
+    public String errorMessage(){
+        String errorMessageText = driver.findElement(By.cssSelector("h3[data-test='error']")).getText();
+        return errorMessageText;
+    }
+
+    public WebElement loginForm(){
+        WebElement loginForm = driver.findElement(By.tagName("form"));
+        return loginForm;
     }
 }
