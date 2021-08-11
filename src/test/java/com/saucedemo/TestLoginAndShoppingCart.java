@@ -42,6 +42,7 @@ public class TestLoginAndShoppingCart extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage();
         checkOutPage.checkOut();
         checkOutPage.addUserInfo();
+        checkOutPage.checkOutComplete();
 
     }
 }

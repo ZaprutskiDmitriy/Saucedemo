@@ -4,13 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class CheckOutPage extends BasePage{
-public void checkOut() {
-    WebElement checkOutButton = driver.findElement(By.cssSelector("#checkout"));
-    checkOutButton.click();
+public class CheckOutPage extends BasePage {
+    public void checkOut() {
+        WebElement checkOutButton = driver.findElement(By.cssSelector("#checkout"));
+        checkOutButton.click();
     }
-//    public class userInfo extends {
-    public void addUserInfo(){
+
+    //    public class userInfo extends {
+    public void addUserInfo() {
         WebElement firstName = driver.findElement(By.cssSelector("#first-name"));
         firstName.sendKeys("Sergey");
         WebElement lastName = driver.findElement(By.cssSelector("#last-name"));
@@ -21,9 +22,12 @@ public void checkOut() {
         continueButton.click();
         WebElement finishButton = driver.findElement(By.cssSelector("#finish"));
         finishButton.click();
-        WebElement checkOutComplete = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span"));
-        String checkOutCompleteText = checkOutComplete.getText();
-        Assert.assertEquals(checkOutCompleteText,"CHECKOUT: COMPLETE!");
+
     }
 
+    public void checkOutComplete() {
+        WebElement checkOutComplete = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span"));
+        String checkOutCompleteText = checkOutComplete.getText();
+        Assert.assertEquals(checkOutCompleteText, "CHECKOUT: COMPLETE!");
+    }
 }
