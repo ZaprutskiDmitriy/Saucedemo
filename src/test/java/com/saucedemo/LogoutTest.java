@@ -16,11 +16,12 @@ public class LogoutTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
 
         HomePage homePage = new HomePage();
-        homePage.burgerMenu();
+        homePage.isPageOpened();
+        homePage.openBurgerMenu();
         homePage.logout();
 
         Assert.assertTrue(loginPage.loginForm().isDisplayed());
-        loginPage.loginButton();
-        Assert.assertEquals(loginPage.errorMessage(), "Epic sadface: Username is required");
+        loginPage.clickLoginButton();
+        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username is required");
     }
 }

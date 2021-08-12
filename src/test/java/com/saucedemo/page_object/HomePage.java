@@ -3,46 +3,75 @@ package com.saucedemo.page_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage{
 
-    public void addProductToCart(String productName){
-        WebElement addToCartButton = driver.findElement(By.cssSelector("button[data-test='add-to-cart-sauce-labs-fleece-jacket']"));
+    @FindBy(css = "button[data-test='add-to-cart-sauce-labs-fleece-jacket']")
+    private WebElement addToCartButton;
+    @FindBy(css = "button[data-test='add-to-cart-sauce-labs-backpack']")
+    private WebElement addAnotherToCartButton;
+    @FindBy(css = "button[data-test='remove-sauce-labs-fleece-jacket']")
+    private WebElement removeFromCartButton;
+    @FindBy(css = ".shopping_cart_badge")
+    private WebElement shoppingCartLink;
+    @FindBy(css = ".shopping_cart_link")
+    private WebElement shoppingEmptyCartLink;
+    @FindBy(css = "#react-burger-menu-btn")
+    private WebElement burgerButton;
+    @FindBy(css = "#logout_sidebar_link")
+    private WebElement logoutRef;
+    @FindBy(css = "span.title")
+    private WebElement title;
+
+    public HomePage() {
+        super();
+        PageFactory.initElements(driver, this);
+    }
+
+    @Override
+    public BasePage isPageOpened() {
+        //ОЖИДАНИЕ ПОКА НА СТРАНИЦЕ НЕ ОТОБРАЗИТСЯ ПОСЛЕДНИЙ ЭЛЕМЕНТ
+        return this;
+    }
+
+    @Override
+    public BasePage openPage() {
+        //МЕТОД ДЛЯ ОТКРЫТИЯ КОНКРЕТНОЙ СТРАНИЦЫ
+        return this;
+    }
+
+    public HomePage addProductToCart(String productName){
         addToCartButton.click();
+        return this;
     }
 
     public void addAnotherProductToCart(String productName){
-        WebElement addAnotherToCartButton = driver.findElement(By.cssSelector("button[data-test='add-to-cart-sauce-labs-backpack']"));
         addAnotherToCartButton.click();
     }
 
     public void removeProductFromCart(String productName){
-        WebElement removeFromCartButton = driver.findElement(By.cssSelector("button[data-test='remove-sauce-labs-fleece-jacket']"));
         removeFromCartButton.click();
     }
 
     public void navigateToCart(){
-        WebElement shoppingCartLink = driver.findElement(By.cssSelector(".shopping_cart_badge"));
         shoppingCartLink.click();
     }
 
     public void navigateToEmptyCart(){
-        WebElement shoppingCartLink = driver.findElement(By.cssSelector(".shopping_cart_link"));
-        shoppingCartLink.click();
+        shoppingEmptyCartLink.click();
     }
 
-    public void burgerMenu(){
-        WebElement burgerButton = driver.findElement(By.cssSelector("#react-burger-menu-btn"));
+    public void openBurgerMenu(){
         burgerButton.click();
     }
 
     public void logout(){
-        WebElement logoutRef = driver.findElement(By.cssSelector("#logout_sidebar_link"));
         logoutRef.click();
     }
 
-    public String title(){
-        String titleText = driver.findElement(By.cssSelector("span.title")).getText().toLowerCase();
-        return titleText;
+    public String getTitle(){
+        return title.getText().toLowerCase();
     }
 }

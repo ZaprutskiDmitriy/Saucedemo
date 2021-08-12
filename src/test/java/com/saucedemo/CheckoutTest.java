@@ -11,28 +11,25 @@ public class CheckoutTest extends BaseTest {
     @Test
     public void checkoutTest() {
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "secret_sauce");
-
-        HomePage homePage = new HomePage();
-        homePage.addProductToCart("Sauce Labs Fleece Jacket");
-
-        homePage.navigateToCart();
+        new LoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Fleece Jacket")
+                .navigateToCart();
 
         CartPage cartPage = new CartPage();
-        cartPage.checkout();
+        cartPage.isPageOpened();
+        cartPage.clickCheckoutButton();
 
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage();
-        checkoutStepOnePage.userInformation("First_Name", "Last_Name", "220000");
+        checkoutStepOnePage.enterUserInformation("First_Name", "Last_Name", "220000");
 
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage();
-        checkoutStepTwoPage.title();
-        Assert.assertEquals(homePage.title(), "checkout: overview");
+        Assert.assertEquals(checkoutStepTwoPage.getTitle(), "checkout: overview");
 
         checkoutStepTwoPage.finishCheckout();
 
         CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
-        Assert.assertEquals(checkoutCompletePage.orderMessage(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
+        Assert.assertEquals(checkoutCompletePage.getOrderMessage(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
 
     }
 }

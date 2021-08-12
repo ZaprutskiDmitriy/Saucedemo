@@ -11,17 +11,16 @@ public class ContinueShoppingTest extends BaseTest {
     @Test
     public void continueShoppingTest() {
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "secret_sauce");
-
-        HomePage homePage = new HomePage();
-        homePage.addProductToCart("Sauce Labs Fleece Jacket");
-
-        homePage.navigateToCart();
+        new LoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Fleece Jacket")
+                .navigateToCart();
 
         CartPage cartPage = new CartPage();
-        cartPage.continueShoppingButton();
+        cartPage.isPageOpened();
+        cartPage.clickContinueShoppingButton();
+        HomePage homePage = new HomePage();
 
-        Assert.assertEquals(homePage.title(), "products");
+        Assert.assertEquals(homePage.getTitle(), "products");
     }
 }

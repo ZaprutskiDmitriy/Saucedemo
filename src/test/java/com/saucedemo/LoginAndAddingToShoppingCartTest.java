@@ -13,15 +13,13 @@ public class LoginAndAddingToShoppingCartTest extends BaseTest {
     @Test
     public void loginAndAddingToShoppingCartTest() {
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "secret_sauce");
-
-        HomePage homePage = new HomePage();
-        homePage.addProductToCart("Sauce Labs Fleece Jacket");
-
-        homePage.navigateToCart();
+        new LoginPage()
+        .login("standard_user", "secret_sauce")
+        .addProductToCart("Sauce Labs Fleece Jacket")
+        .navigateToCart();
 
         CartPage cartPage = new CartPage();
+        cartPage.isPageOpened();
         Map<String, String> productInCartData = cartPage.getProductData();
 
         Assert.assertFalse(productInCartData.isEmpty(), "No products in cart");

@@ -22,7 +22,7 @@ public class RemoveButtonAtShoppingCartTest extends BaseTest {
         homePage.navigateToCart();
 
         CartPage cartPage = new CartPage();
-        cartPage.removeButton();
+        cartPage.clickRemoveButton();
         Map<String, String> productInCartData = cartPage.getProductData();
         Assert.assertTrue(productInCartData.isEmpty(), "Have products in cart");
 

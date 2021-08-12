@@ -9,27 +9,22 @@ public class CalculateTotalCostOrderTest extends BaseTest{
     @Test
     public void calculateTotalCostTest() {
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "secret_sauce");
-
-        HomePage homePage = new HomePage();
-        homePage.addProductToCart("Sauce Labs Fleece Jacket");
-        homePage.addAnotherProductToCart("Sauce Labs Backpack");
-
-        homePage.navigateToCart();
+        new LoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Fleece Jacket")
+                .navigateToCart();
 
         CartPage cartPage = new CartPage();
-        cartPage.checkout();
+        cartPage.clickCheckoutButton();
 
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage();
-        checkoutStepOnePage.userInformation("First_Name", "Last_Name", "220000");
+        checkoutStepOnePage.enterUserInformation("First_Name", "Last_Name", "220000");
 
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage();
 
-        checkoutStepTwoPage.title();
-        Assert.assertEquals(checkoutStepTwoPage.itemTotal(), "Item total: $79.98");
-        Assert.assertEquals(checkoutStepTwoPage.taxTotal(), "Tax: $6.40");
-        Assert.assertEquals(checkoutStepTwoPage.totalCost(), "Total: $86.38");
-
+        checkoutStepTwoPage.getTitle();
+        Assert.assertEquals(checkoutStepTwoPage.getItemTotal(), "Item total: $79.98");
+        Assert.assertEquals(checkoutStepTwoPage.getTaxTotal(), "Tax: $6.40");
+        Assert.assertEquals(checkoutStepTwoPage.getTotalCost(), "Total: $86.38");
     }
 }

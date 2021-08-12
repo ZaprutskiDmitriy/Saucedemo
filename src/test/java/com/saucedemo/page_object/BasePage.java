@@ -9,4 +9,9 @@ public abstract class BasePage {
     public BasePage(){
         driver=DriverProvider.get();
     }
+
+    public abstract BasePage isPageOpened();
+
+    public abstract BasePage openPage();
+
 }
