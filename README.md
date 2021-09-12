@@ -1,4 +1,4 @@
-##Update versions of all libraries in the project
+# Update versions of all libraries in the project
 + mvn versions:display-dependency-updates
   
   [INFO] The following dependencies in Plugin Dependencies have newer versions:
@@ -15,13 +15,13 @@
   
   [INFO] Updated io.qameta.allure:allure-testng:jar:2.13.9 to version 2.14.0
 
-##Run tests using mvn clean test command
+# Run tests using mvn clean test command
 
 + mvn clean test
 
 Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 27.672 s <<< FAILURE!
 
-##Use parameters to run specific tests and methods
+# Use parameters to run specific tests and methods
 
 + mvn -Dtest=CheckoutTest test
   
@@ -31,7 +31,7 @@ Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 27.672 s <<< FAI
   
   Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.054 s
   
-##Pass a parameter from the mvn command line inside the test
+# Pass a parameter from the mvn command line inside the test
 
 + mvn -Dtest=CheckoutTest test -DtestProp=test123
 
