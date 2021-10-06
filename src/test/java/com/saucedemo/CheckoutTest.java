@@ -31,5 +31,6 @@ public class CheckoutTest extends BaseTest {
         CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
         Assert.assertEquals(checkoutCompletePage.getOrderMessage(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
 
+        System.out.println(System.getProperty("testProp"));
     }
 }

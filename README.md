@@ -1,6 +1,41 @@
-1) Проверить работу Logout кнопки (ожидаемый результат: переход на страницу авторизации со сброшенными полями "Username" и "Password")
-2) Проверить работу кнопки "Remove" у товара помещенного в корзину (ожидаемый результат: корзина будет пуста)
-3) Проверить работу кнопки "Remove" на странице каталога до перехода в корзину (ожидаемый результат: корзина будет пуста)
-4) Проверить работу кнопки "Continue shopping" в корзине (ожидаемый результат: переход на страницу каталога)
-5) Проверить правильность работы функции оформления заказа "Checkout" (ожидаемый результат: успешное оформление заказа)
-6) Проверить правильный подсчет суммы заказа (ожидаемый результат: стоимость заказа равняется сумме цен на товары)
+# Update versions of all libraries in the project
++ mvn versions:display-dependency-updates
+  
+  [INFO] The following dependencies in Plugin Dependencies have newer versions:
+  
+  [INFO]   org.aspectj:aspectjweaver .......................... 1.9.6 -> 1.9.8.M1
+  
++ mvn versions:use-latest-versions
+  
+  [INFO] Major version changes allowed
+  
+  [INFO] Updated org.seleniumhq.selenium:selenium-java:jar:3.141.59 to version 4.0.0-rc-1
+  
+  [INFO] Updated io.github.bonigarcia:webdrivermanager:jar:4.4.3 to version 5.0.1
+  
+  [INFO] Updated io.qameta.allure:allure-testng:jar:2.13.9 to version 2.14.0
+
+# Run tests using mvn clean test command
+
++ mvn clean test
+
+Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 27.672 s <<< FAILURE!
+
+# Use parameters to run specific tests and methods
+
++ mvn -Dtest=CheckoutTest test
+  
+  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.035 s
+
++ mvn -Dtest=LogoutTest#logoutTest test
+  
+  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.054 s
+  
+# Pass a parameter from the mvn command line inside the test
+
++ mvn -Dtest=CheckoutTest test -DtestProp=test123
+
+test123
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.59 s
+
