@@ -23,8 +23,8 @@ public class CalculateTotalCostOrderTest extends BaseTest{
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage();
 
         checkoutStepTwoPage.getTitle();
-        Assert.assertEquals(checkoutStepTwoPage.getItemTotal(), "Item total: $79.98");
-        Assert.assertEquals(checkoutStepTwoPage.getTaxTotal(), "Tax: $6.40");
-        Assert.assertEquals(checkoutStepTwoPage.getTotalCost(), "Total: $86.38");
+        Assert.assertEquals(checkoutStepTwoPage.getItemTotal(), "Item total: $49.99");
+        Assert.assertEquals(checkoutStepTwoPage.getTaxTotal(), "Tax: $4.00");
+        Assert.assertEquals(checkoutStepTwoPage.getTotalCost(), "Total: $53.99");
     }
 }
