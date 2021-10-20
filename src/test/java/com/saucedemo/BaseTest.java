@@ -10,14 +10,14 @@ import org.testng.annotations.AfterTest;
 
 public class BaseTest {
     @AfterMethod
-    public void afterTest(){
+    public void afterTest() {
         DriverProvider.quit();
     }
 
     @Attachment(value = "screenshot", type = "image/png")
-    public byte[] takeScreenshot(){
+    public byte[] takeScreenshot() {
         WebDriver driver = DriverProvider.get();
-        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
 }
