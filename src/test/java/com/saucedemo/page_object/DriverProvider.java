@@ -17,6 +17,7 @@ public class DriverProvider {
 //            driver = new ChromeDriver();
             WebDriverManager.operadriver().setup();
             driver = new OperaDriver();
+
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             driver.get("https://www.saucedemo.com/");
         }
