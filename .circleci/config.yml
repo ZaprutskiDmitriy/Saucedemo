@@ -7,7 +7,6 @@ jobs:
   ui-tests:
     docker:
       - image: circleci/openjdk:11.0.8-jdk-browsers
-      - image: zeitgeist/docker-opera
     steps:
       - checkout
       - restore_cache:
